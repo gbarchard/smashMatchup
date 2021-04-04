@@ -1,5 +1,4 @@
 import React, { useState, createContext } from 'react';
-import characterList from './characterList'
 
 export const CharacterContext = createContext();    
 
