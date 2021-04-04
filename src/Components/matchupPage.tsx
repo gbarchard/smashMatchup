@@ -1,28 +1,20 @@
 import React, { useContext } from 'react'
-
 import { CharacterContext } from '../characterContext'
-import { ArticleContext } from '../articleContext'
-import articles from '../articles'
 import characterList from '../characterList'
 
-function getArticleByID(id:string) {
-    articles.forEach(article => {
-        if(id === article.id) {
-            return article
-        }
-    })
-    return articles[1]
-}
+import articles from '../articles'
 
 
-const MatchupPage = ()  => {
-    const [selectedCharacters] = useContext(CharacterContext)
-    const [selectedArticle] = useContext(ArticleContext)
+
+const MatchupPage = (props: any)  => {
+    const [selectedCharacters] = useContext(CharacterContext);
+    // var id = getArticleIDByCharacterNames(selectedCharacters.character1,selectedCharacters.character2)
+    // console.log('did we get the id'+id)
     return (
-        <>
-            <h1>{selectedCharacters[0].name} {selectedCharacters[1].name}</h1>
-            <h1>{selectedArticle}</h1>
-        </>
+        <div>
+            <h1>{selectedCharacters.character1} {selectedCharacters.character2}</h1>
+            <h1>{selectedCharacters.article}</h1>
+        </div>
     )
 }
 export default MatchupPage

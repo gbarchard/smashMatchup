@@ -1,51 +1,60 @@
 import React, { useContext } from 'react'
-import SelectSearch, { fuzzySearch } from 'react-select-search'
 import { CharacterContext } from '../characterContext'
-import { ArticleContext } from '../articleContext'
+import articles from '../articles'
+
+import SelectSearch, { fuzzySearch } from 'react-select-search'
 import characterList from '../characterList';
 
-function getArticleIDByCharacterNames(leftName:string, rightName:string) {
-    var leftID = ""
-    var rightID = ""
-    characterList.forEach(character => {
-        if(character.name === leftName) {
-            leftID += character.id
-        }
-        if(character.name === rightName) {
-            rightID += character.id
-        }
-    })
-    return (leftID+rightID)
-}
 
-interface side {
-    side: string
-}
 
-const CharacterDropdown = (props:side)  => {
-    const [selectedCharacters, setCharacters] = useContext(CharacterContext)
-    const [selectedArticle, setArticle] = useContext(ArticleContext)
-
-    const changeCharacter = (e: any) => {
-        // setArticle(changeArticle(e))
-        let newCharacters = [...selectedCharacters]
-        if(props.side === 'left') {
-            newCharacters[0].name = e
-        }
-        else {
-            newCharacters[1].name = e
-        }
-        setCharacters(newCharacters)
+const CharacterDropdown = (props: any)  => {
+    
+    function getArticleIDByCharacterNames(left:string,right:string) {
+        var leftID = ""
+        var rightID = ""
+        characterList.forEach(character => {
+            if(character.name === left) {
+                leftID += character.id
+            }
+            if(character.name === right) {
+                rightID += character.id
+            }
+        })
+        return (leftID+rightID)
     }
 
-    // const changeArticle = (e: any) => {
-    //     getArticleIDByCharacterNames(selectedCharacters[0],selectedCharacters[1])
-    // }
+    function getArticleByID(id:string) {
+        var val = ""
+        articles.forEach(article => {
+            if(id === article.id) {
+                val =  article.notes
+            }
+        })
+        return val
+    }    
+    
+    const [selectedCharacters, setCharacters] = useContext(CharacterContext);
+
+    const changeCharacter = (e: any) => {
+        let newCharacters = {...selectedCharacters}
+        if(props.side === 'left') {
+            newCharacters.character1 = e
+        }
+        else {
+            newCharacters.character2 = e
+        }
+        console.log(getArticleByID(getArticleIDByCharacterNames(newCharacters.character1,newCharacters.character2)))
+        newCharacters.article = getArticleByID(getArticleIDByCharacterNames(newCharacters.character1,newCharacters.character2))
+            setCharacters(newCharacters)
+
+    }
+
+    
 
     return (
-        <>
+        <div>
             <SelectSearch onChange={changeCharacter}  options={characterList} search filterOptions={fuzzySearch} placeholder='Character' />
-        </>
+        </div>
     )
 }
 export default CharacterDropdown

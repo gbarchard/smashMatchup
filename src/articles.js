@@ -1,5 +1,10 @@
 const articles = [
     {
+        id: "000000",
+        title: "No selection",
+        notes: "Pick 4 Characters"
+    },
+    {
         id: "001001",
         title: "Mario vs Mario",
         notes: "these are very insightful notes"
