@@ -20,10 +20,10 @@ function App() {
       <CharacterProvider>
         <div className='character-search-container'>
           <div className='character-dropdown' id='character-search-left'>
-            <CharacterDropdown side={'left'}/>
+            <CharacterDropdown id={'left'}/>
           </div>
           <div className='character-dropdown' id='character-search-right'>
-            <CharacterDropdown side={'right'}/>
+            <CharacterDropdown id={'right'}/>
           </div>
         </div>
         <MatchupPage name={matchupPageTitle}/>

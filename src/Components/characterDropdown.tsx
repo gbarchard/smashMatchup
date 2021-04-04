@@ -18,9 +18,13 @@ const CharacterDropdown = (props:side)  => {
     // }
     // onChange={setCharacters} value={props.side == 'left' ? characters[0]:characters[1]}
 
+    const changeCharacter = e => {
+        console.log(e)
+    }
+
     return (
         <>
-            <SelectSearch onChange={setCharacters(characters)} value={characters[0].name} options={options} search filterOptions={fuzzySearch} placeholder='Character' />
+            <SelectSearch onChange={changeCharacter} value={characters} options={options} search filterOptions={fuzzySearch} placeholder='Character' />
             <h1>{characters[0].name}</h1>
         </>
     )
