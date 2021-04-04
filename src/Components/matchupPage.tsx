@@ -1,11 +1,11 @@
-interface name {
-    name: string
-}
+import React, { useState, useContext } from 'react'
+import { CharacterContext } from '../characterContext'
 
-function MatchupPage(props:name) {
+const MatchupPage = ()  => {
+    const [characters, setCharacters] = useContext(CharacterContext)
     return (
         <>
-            <h1>Title {props.name}</h1>
+            <h1>{characters[0].name} {characters[1].name}</h1>
         </>
     )
 }

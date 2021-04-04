@@ -1,32 +1,33 @@
-// import logo from './logo.svg';
 import './App.css';
 import Header from './Components/header.tsx';
 import CharacterDropdown from './Components/characterDropdown'
 import MatchupPage from './Components/matchupPage'
+import { CharacterProvider } from './characterContext'
+
+var name1 = 'mario'
+var name2 = 'dk'
+// function setNameLeft() {
+//   name1 = value
+// }
 
 
-var name1 = 'name1'
-var name2 = 'name2'
-function setNameLeft() {
-  name1 = value
-}
-
-
-var matchupPageTitle= name1+name2
+var matchupPageTitle= (name1+" "+name2)
 
 function App() {
   return (
     <div className="App">
       <Header className='header'/>
-      <div className='character-search-container'>
-        <div className='character-dropdown' id='character-search-left'>
-          <CharacterDropdown />
+      <CharacterProvider>
+        <div className='character-search-container'>
+          <div className='character-dropdown' id='character-search-left'>
+            <CharacterDropdown side={'left'}/>
+          </div>
+          <div className='character-dropdown' id='character-search-right'>
+            <CharacterDropdown side={'right'}/>
+          </div>
         </div>
-        <div className='character-dropdown' id='character-search-right'>
-          <CharacterDropdown />
-        </div>
-      </div>
-      <MatchupPage name={matchupPageTitle}/>
+        <MatchupPage name={matchupPageTitle}/>
+      </CharacterProvider>
     </div>
   );
 }
