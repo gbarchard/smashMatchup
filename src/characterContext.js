@@ -3,17 +3,17 @@ import React, { useState, createContext } from 'react';
 export const CharacterContext = createContext()
 
 export const CharacterProvider = props => {
-    const [characters, setCharacters] = useState([
+    const [selectedCharacters, setCharacters] = useState([
         {
-            name: "left",
+            name: "",
         },
         {
-            name: "right",
+            name: "",
         }
     ])
 
     return (
-        <CharacterContext.Provider value={[characters, setCharacters]}>
+        <CharacterContext.Provider value={[selectedCharacters, setCharacters]}>
             {props.children}
         </CharacterContext.Provider>
     )
