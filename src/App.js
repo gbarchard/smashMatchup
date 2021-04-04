@@ -4,14 +4,6 @@ import CharacterDropdown from './Components/characterDropdown'
 import MatchupPage from './Components/matchupPage'
 import { CharacterProvider } from './characterContext'
 
-var name1 = 'mario'
-var name2 = 'dk'
-// function setNameLeft() {
-//   name1 = value
-// }
-
-
-var matchupPageTitle= (name1+" "+name2)
 
 function App() {
   return (
@@ -26,7 +18,7 @@ function App() {
             <CharacterDropdown side='right'/>
           </div>
         </div>
-        <MatchupPage name={matchupPageTitle}/>
+        <MatchupPage/>
       </CharacterProvider>
     </div>
   );
