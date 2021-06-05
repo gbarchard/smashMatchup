@@ -1,6 +1,8 @@
 .header {
   background-color: yellow;
-  color: aqua
+  color: aqua;
+  font-size: 3em;
+  text-align: center
 }
 #character-search-left {
   /* float: left; */
