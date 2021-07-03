@@ -1,12 +1,15 @@
 import React, { useContext } from 'react'
-import { CharacterContext } from '../characterContext'
+import { ArticleContext } from '../articleContext'
+// import StageCard  from './stageCard'
+import StageList from './stageList'
 
 const MatchupPage = (props: any)  => {
-    const [selectedCharacters] = useContext(CharacterContext);
+    const [selectedArticle] = useContext(ArticleContext);
+    console.log(selectedArticle)
     return (
         <>
-            <h1>{selectedCharacters.character1}     {selectedCharacters.character2}</h1>
-            <h1>{selectedCharacters.article}</h1>
+            <h1>{selectedArticle.article.characterPlayingAs}     {selectedArticle.article.characterPlayingAgainst}</h1>
+            <h1>{selectedArticle.article.notes}</h1>
             {/* <h2>Overview</h2>
             <p>This is the summary of how you play the matchup</p>
             <h2>Nuetral</h2>
@@ -25,9 +28,9 @@ const MatchupPage = (props: any)  => {
             <p>This is how you get off of ledge</p> */}
             <h2>Stages</h2>
             <h3>Pick</h3>
-            <p>Battlefield, Final Destination</p>
+            <StageList stages={selectedArticle.article.chooseStages}/>
             <h3>Ban</h3>
-            <p>Smashville, Town and City</p>
+            <StageList stages={selectedArticle.article.banStages}/>
             <h2>Vods</h2>
         </>
     )

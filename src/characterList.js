@@ -1,3 +1,5 @@
+import characterNames from './data/characters.js'
+
 function getCharacterIDByName(name) {
     return zeroPad(characterNames.indexOf(name)+1,3)
 }
@@ -15,16 +17,6 @@ class Character {
         this.id = getCharacterIDByName(name)
     }
 }
-
-const characterNames = [
-    "Mario",
-    "Donkey Kong",
-    "Link",
-    "Samus",
-    "Dark Samus",
-    "Yoshi",
-    "Kirby"
-]
 
 const characterList = [new Character(characterNames[0])]
 for(var i = 1; i < characterNames.length; i++){    

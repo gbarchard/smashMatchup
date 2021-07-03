@@ -2,14 +2,14 @@ import './App.css';
 import Header from './Components/header.tsx';
 import CharacterDropdown from './Components/characterDropdown'
 import MatchupPage from './Components/matchupPage'
-import { CharacterProvider } from './characterContext'
+import { ArticleProvider } from './articleContext'
 
 
 function App() {
   return (
     <div className="App">
       <Header className='header'/>
-      <CharacterProvider>
+      <ArticleProvider>
         <div className='character-search-container'>
           <div className='character-dropdown' id='character-search-left'>
             <CharacterDropdown side='left'/>
@@ -19,7 +19,7 @@ function App() {
           </div>
         </div>
         <MatchupPage/>
-      </CharacterProvider>
+      </ArticleProvider>
     </div>
   );
 }
