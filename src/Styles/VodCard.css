@@ -1,0 +1,17 @@
+.vod-card {
+    width: 400px !important;
+    margin: 0px 0px 30px 30px;
+}
+
+.youtube {
+    position: relative;
+    left: -12px;
+}
+
+.vod-player-name-row {
+    display: inline-block;
+}
+
+.vod-score {
+    float: right;
+}

@@ -1,0 +1,6 @@
+.stage-list-modal {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, max-content));
+    justify-content: center;
+    margin: auto;
+}

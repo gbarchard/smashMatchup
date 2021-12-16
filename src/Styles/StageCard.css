@@ -1,0 +1,10 @@
+.stage-card {
+    width: 20em !important;
+    margin-left: 10px;
+    margin-bottom: 10px;
+    width: 50%
+}
+
+.stage-card-image {
+    margin-top: 10px
+}
