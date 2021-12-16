@@ -6,19 +6,19 @@ let Stages:object =
     },
     finalDestination: {
         name: "Final Destination",
-        image: "finalDestination.png"
+        image: "final-destination.png"
     },
     smallBattlefield: {
         name: "Small Battlefield",
-        image: "smallBattlefield.png"
+        image: "small-battlefield.png"
     },
     yoshisStory: {
         name: "Yoshi's Story",
-        image: "yoshisStory.png"
+        image: "yoshis-story.png"
     },
     pokemonStadium2: {
         name: "Pokémon Stadium 2",
-        image: "pokemonStadium2.png"
+        image: "pokemon-stadium-2.png"
     },
     smashville: {
         name: "Smashville",
@@ -26,19 +26,19 @@ let Stages:object =
     },
     lylatCruise: {
         name: "Lylat Cruise",
-        image: "lylatCruise.png"
+        image: "lylat-cruise.png"
     },
     townAndCity: {
         name: "Town and City",
-        image: "townAndCity.png"
+        image: "town-and-city.png"
     },
     kalosPokemonLeauge: {
         name: "Kalos Pokémon League",
-        image: "kalosPokemonLeauge"
+        image: "kalos-pokemon-league.png"
     },
     northernCave: {
         name: "Northern Cave",
-        image: "northernCave.png"
+        image: "northern-cave.png"
     }
 
 }

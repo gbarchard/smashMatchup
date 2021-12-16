@@ -5,9 +5,7 @@ export const ArticleContext = createContext();
 
 
 export const ArticleProvider = props => {
-    const [selectedArticle, setArticle] = useState({
-        article: articles[0]
-        })
+    const [selectedArticle, setArticle] = useState(articles[0])
     
     return (
         <ArticleContext.Provider value={[selectedArticle, setArticle]}>

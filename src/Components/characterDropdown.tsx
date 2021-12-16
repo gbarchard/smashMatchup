@@ -3,6 +3,7 @@ import { ArticleContext } from '../articleContext'
 import articles from '../articles'
 import SelectSearch, { fuzzySearch } from 'react-select-search'
 import characterList from '../characterList';
+import '../Styles/ReactSelectSearch.css'
 
 const CharacterDropdown = (props: any)  => {
     function getArticleIDByCharacterNames(left:string,right:string) {
@@ -23,7 +24,7 @@ const CharacterDropdown = (props: any)  => {
         var val = ""
         articles.forEach(article => {
             if(id === article.id) {
-                val =  article
+                val = article
             }
         })
         if (id.length < 6) {
@@ -37,29 +38,40 @@ const CharacterDropdown = (props: any)  => {
     const changeCharacter = (e: any) => {
         let newCharacters = {...selectedArticle}
         if(props.side === 'left') {
-            newCharacters.character1 = e
+            newCharacters.characterPlayingAs = e
         }
         else {
-            newCharacters.character2 = e
+            newCharacters.characterPlayingAgainst = e
         }
-        // console.log(getArticleByID(getArticleIDByCharacterNames(newCharacters.character1,newCharacters.character2)))
-        newCharacters.article = getArticleByID(getArticleIDByCharacterNames(newCharacters.character1,newCharacters.character2))
-            setArticle(newCharacters)
+        setArticle(getArticleByID(getArticleIDByCharacterNames(newCharacters.characterPlayingAs,newCharacters.characterPlayingAgainst)))
 
     }
 
     
+    const characterPictures = (props, option, snapshot, className) => {
+        const imgStyle = {
+            borderRadius: '50%',
+            verticalAlign: 'middle',
+            marginRight: 10,
+        };
+
+        return (
+            <button {...props} className={className} type="button">
+                <span><img alt="" style={imgStyle} width="32" height="32" src={option.avatar} /><span>{option.name}</span></span>
+            </button>
+        );
+
+    }
 
     return (
-        <>
-            <SelectSearch 
-                onChange={changeCharacter}
-                options={characterList} search
-                // renderOption='public/images/stages/battlefield.png'
-                filterOptions={fuzzySearch}
-                placeholder='Character'
-            />
-        </>
+        <SelectSearch 
+            onChange={changeCharacter}
+            options={characterList}
+            search
+            renderOption={characterPictures}
+            filterOptions={fuzzySearch}
+            placeholder='Character'
+        />
     )
 }
 export default CharacterDropdown

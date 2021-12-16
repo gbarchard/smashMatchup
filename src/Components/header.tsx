@@ -1,10 +1,14 @@
-import '../App.css'
+import '../Styles/App.css'
+import Navbar from 'react-bootstrap/Navbar'
+import Container from 'react-bootstrap/Container'
 
 function Header() {
     return (
-        <>
-            <header className='header'>Ultimate Matchup</header>
-        </>
+        <Navbar bg="light">
+            <Container>
+                <Navbar.Brand>Smash Ultimate Matchups</Navbar.Brand>
+            </Container>
+        </Navbar>
     )
 }
 

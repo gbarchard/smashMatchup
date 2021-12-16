@@ -1,15 +1,33 @@
-import React, { useContext } from 'react'
+import React, { useContext, useState } from 'react'
 import { ArticleContext } from '../articleContext'
-// import StageCard  from './stageCard'
-import StageList from './stageList'
+import StageList from './StageList'
+import StageModal from './StageModal'
+import ArticleTitle from './ArticleTitle';
+import VodList from './VodList'
+import MatchupNumber from './MatchupNumber';
+import Button from 'react-bootstrap/Button'
 
 const MatchupPage = (props: any)  => {
     const [selectedArticle] = useContext(ArticleContext);
-    console.log(selectedArticle)
+    const [openPick, setOpenPick] = useState(false)
+    const [openBan, setOpenBan] = useState(false)
+
+    if(selectedArticle.id.includes("000")) {
+        return (
+            <div>Welcome!</div>
+        )
+    }
+
     return (
         <>
-            <h1>{selectedArticle.article.characterPlayingAs}     {selectedArticle.article.characterPlayingAgainst}</h1>
-            <h1>{selectedArticle.article.notes}</h1>
+            <ArticleTitle
+                nameLeft={selectedArticle.characterPlayingAs}
+                nameRight={selectedArticle.characterPlayingAgainst}
+                imageLeft={selectedArticle.characterPlayingAsAvatar}
+                imageRight={selectedArticle.characterPlayingAgainstAvatar}
+            />
+            <MatchupNumber number={selectedArticle.matchupNumber}/>
+            <h1>{selectedArticle.notes}</h1>
             {/* <h2>Overview</h2>
             <p>This is the summary of how you play the matchup</p>
             <h2>Nuetral</h2>
@@ -28,10 +46,19 @@ const MatchupPage = (props: any)  => {
             <p>This is how you get off of ledge</p> */}
             <h2>Stages</h2>
             <h3>Pick</h3>
-            <StageList stages={selectedArticle.article.chooseStages}/>
+            <Button onClick={() => setOpenPick(true)}>Change</Button>
+            <StageModal open={openPick} onClose={() => setOpenPick(false)} edit={'pick'}/>
+            <StageList stages={selectedArticle.chooseStages}/>
             <h3>Ban</h3>
-            <StageList stages={selectedArticle.article.banStages}/>
+            <Button onClick={() => setOpenBan(true)}>Change</Button>
+            <StageModal open={openBan} onClose={() => setOpenBan(false)} edit={'ban'}/>
+            <StageList stages={selectedArticle.banStages}/>
             <h2>Vods</h2>
+            <VodList
+                vods={selectedArticle.vods}
+                characterTop={selectedArticle.characterPlayingAsAvatar}
+                characterBottom={selectedArticle.characterPlayingAgainstAvatar}
+            />
         </>
     )
 }
