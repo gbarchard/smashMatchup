@@ -12,27 +12,7 @@ class Article {
         this.notes = ('How to play against '+charRight.name+' as '+charLeft.name)
         this.chooseStages = []
         this.banStages = []
-        this.vods = [
-            {
-                youtubeId: "SqHRtURYQPo",
-                topName: "Mkleo",
-                bottomName: "BestNess",
-                tournamentSet: "Evo 2019 Grand Finals",
-                scoreTop: "3",
-                scoreBottom: "2"
-            },
-            {
-                youtubeId: "n85xcNK_cHQ",
-                topName: "Untaymed",
-                bottomName: "Toast",
-                tournamentSet: "The Bird House 29 Grand Finals",
-                scoreTop: "3",
-                scoreBottom: "2"
-            },
-            {
-
-            }
-        ]
+        this.vods = []
     }
 }
 

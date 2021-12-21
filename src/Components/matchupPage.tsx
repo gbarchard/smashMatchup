@@ -3,6 +3,7 @@ import { ArticleContext } from '../articleContext'
 import StageList from './StageList'
 import StageModal from './StageModal'
 import ArticleTitle from './ArticleTitle';
+import AddVodModal from './AddVodModal'
 import VodList from './VodList'
 import MatchupNumber from './MatchupNumber';
 import Button from 'react-bootstrap/Button'
@@ -54,6 +55,10 @@ const MatchupPage = (props: any)  => {
             <StageModal open={openBan} onClose={() => setOpenBan(false)} edit={'ban'}/>
             <StageList stages={selectedArticle.banStages}/>
             <h2>Vods</h2>
+            <AddVodModal
+                winningCharacter={selectedArticle.characterPlayingAsAvatar}
+                losingCharacter={selectedArticle.characterPlayingAgainstAvatar}
+            />
             <VodList
                 vods={selectedArticle.vods}
                 characterTop={selectedArticle.characterPlayingAsAvatar}
