@@ -6,6 +6,7 @@ import ArticleTitle from './ArticleTitle';
 import AddVodModal from './AddVodModal'
 import VodList from './VodList'
 import MatchupNumber from './MatchupNumber';
+import TextEditor from './TextEditor';
 import Button from 'react-bootstrap/Button'
 
 const MatchupPage = (props: any)  => {
@@ -19,6 +20,8 @@ const MatchupPage = (props: any)  => {
         )
     }
 
+    console.log(selectedArticle.content)
+
     return (
         <>
             <ArticleTitle
@@ -29,6 +32,7 @@ const MatchupPage = (props: any)  => {
             />
             <MatchupNumber number={selectedArticle.matchupNumber}/>
             <h1>{selectedArticle.notes}</h1>
+            <TextEditor content={selectedArticle.content}/>
             {/* <h2>Overview</h2>
             <p>This is the summary of how you play the matchup</p>
             <h2>Nuetral</h2>
