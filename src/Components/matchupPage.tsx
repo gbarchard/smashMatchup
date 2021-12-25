@@ -20,8 +20,6 @@ const MatchupPage = (props: any)  => {
         )
     }
 
-    console.log(selectedArticle.content)
-
     return (
         <>
             <ArticleTitle

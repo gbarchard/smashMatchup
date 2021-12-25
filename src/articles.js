@@ -13,7 +13,7 @@ class Article {
         this.chooseStages = []
         this.banStages = []
         this.vods = []
-        this.content = "<p>"+this.id+"</p>"
+        this.content = []
     }
 }
 
