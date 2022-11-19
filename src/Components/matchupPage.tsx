@@ -6,13 +6,13 @@ import ArticleTitle from './ArticleTitle';
 import AddVodModal from './AddVodModal'
 import VodList from './VodList'
 import MatchupNumber from './MatchupNumber';
+import MatchupNumberModal from './MatchupNumberModal'
 import TextEditor from './TextEditor';
 import Button from 'react-bootstrap/Button'
 
 const MatchupPage = (props: any)  => {
     const [selectedArticle] = useContext(ArticleContext);
-    const [openPick, setOpenPick] = useState(false)
-    const [openBan, setOpenBan] = useState(false)
+    const [edit, setEdit] = useState(false)
 
     if(selectedArticle.id.includes("000")) {
         return (
@@ -22,15 +22,19 @@ const MatchupPage = (props: any)  => {
 
     return (
         <>
+            <div>
+                <Button onClick={() => {setEdit(!edit)}}>Edit</Button>
+            </div>
             <ArticleTitle
                 nameLeft={selectedArticle.characterPlayingAs}
                 nameRight={selectedArticle.characterPlayingAgainst}
                 imageLeft={selectedArticle.characterPlayingAsAvatar}
                 imageRight={selectedArticle.characterPlayingAgainstAvatar}
             />
-            <MatchupNumber number={selectedArticle.matchupNumber}/>
+            {/* {edit && <MatchupNumberModal/>} */}
+            <MatchupNumber number={selectedArticle.matchupNumber} edit={edit}/>
             <h1>{selectedArticle.notes}</h1>
-            <TextEditor content={selectedArticle.content}/>
+            <TextEditor content={selectedArticle.content} edit={edit}/>
             {/* <h2>Overview</h2>
             <p>This is the summary of how you play the matchup</p>
             <h2>Nuetral</h2>
@@ -49,18 +53,16 @@ const MatchupPage = (props: any)  => {
             <p>This is how you get off of ledge</p> */}
             <h2>Stages</h2>
             <h3>Pick</h3>
-            <Button onClick={() => setOpenPick(true)}>Change</Button>
-            <StageModal open={openPick} onClose={() => setOpenPick(false)} edit={'pick'}/>
+            {edit && <StageModal edit={'pick'}/>}
             <StageList stages={selectedArticle.chooseStages}/>
             <h3>Ban</h3>
-            <Button onClick={() => setOpenBan(true)}>Change</Button>
-            <StageModal open={openBan} onClose={() => setOpenBan(false)} edit={'ban'}/>
+            {edit && <StageModal edit={'ban'}/>}
             <StageList stages={selectedArticle.banStages}/>
             <h2>Vods</h2>
-            <AddVodModal
+            {edit && <AddVodModal
                 winningCharacter={selectedArticle.characterPlayingAsAvatar}
                 losingCharacter={selectedArticle.characterPlayingAgainstAvatar}
-            />
+            />}
             <VodList
                 vods={selectedArticle.vods}
                 characterTop={selectedArticle.characterPlayingAsAvatar}

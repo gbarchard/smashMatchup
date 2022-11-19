@@ -4,6 +4,7 @@ import CharacterDropdown from './Components/CharacterDropdown'
 import MatchupPage from './Components/MatchupPage'
 import { ArticleProvider } from './articleContext'
 import 'bootstrap/dist/css/bootstrap.min.css';
+import Container from 'react-bootstrap/Container';
 
 
 function App() {
@@ -19,7 +20,9 @@ function App() {
             <CharacterDropdown side='right'/>
           </div>
         </div>
-        <MatchupPage/>
+        <Container>
+          <MatchupPage/>
+        </Container>
       </ArticleProvider>
     </div>
   );

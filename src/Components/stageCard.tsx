@@ -8,7 +8,7 @@ const StageCard = (props: any) => {
     let stagePhoto = "./images/stages/"+Stages[props.stage].image
     let stageName = Stages[props.stage].name
     
-    const [selectedArticle] = useContext(ArticleContext);
+    const [selectedArticle, setArticle] = useContext(ArticleContext);
     let article = {...selectedArticle}
 
     let [stageSelected, setStageSelected] = useState(
@@ -39,6 +39,7 @@ const StageCard = (props: any) => {
             default:
                 break;
         }
+        setArticle(article)
     }
     return (
         <Card
